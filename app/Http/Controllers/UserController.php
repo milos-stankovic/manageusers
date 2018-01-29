@@ -93,6 +93,7 @@ class UserController extends Controller
             'password'=>'required|min:6|confirmed'
         ]);
         $input = $request->only(['name', 'email', 'password']); //Retreive the name, email and password fields
+        $user->fill($input)->save(); // save data from the form
 
         swal()->autoclose(2000)->message('Good Job','You have successfully updated user!','success');
         return redirect()->route('users.index');
